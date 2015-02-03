@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Melons</title>
+    <style>
+        body{
+            margin: 5%;
+        }
+
+        table{
+            border-collapse: collapse;
+            margin:2em 0;
+        }
+         
+        tr, th, td{
+            padding:0.5em 1em;
+            border: 1px solid gray;
+        }
+
+    </style>
+</head>
+ <body>
+    <h1>Melon Lookup</h1>
+    
+    <form action="{{url_for('index')}}" method="post">
+        <label>min<input type="number" name="min"></label>
+        <label>max<input type="number" name="max"></label>
+        <input type="Submit" name="submitted">
+    </form>
+
+    {% if melons %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Melon</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for melon in melons %}
+                <tr>
+                    <td>{{ melon[0] }}</td>
+                    <td>{{ melon[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    {% endif %}
+    
+</body>
+</html>
